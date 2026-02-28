@@ -1,3 +1,5 @@
+https://github.com/TheWeisGuy/dns_app.git
+
 To build, cd to /dns_app and run: docker compose up --build 
 
 This will run every server at once, but to run each one individually, run: python3 <serverName>_server.py
