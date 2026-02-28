@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  authoritative_server:
+    build: .
+    container_name: as_container
+    command: python AS/authoritative_server.py
+    volumes:
+      - .:/app 
+    networks:
+      my_network:
+        ipv4_address: 10.9.10.2
+        
+  fibonacci_server:
+    build: .
+    container_name: fs_container
+    command: python FS/fibonacci_server.py
+    ports:
+    - "9090:9090"
+    networks:
+      my_network:
+        ipv4_address: 10.9.10.3
+        
+  user_server:
+    build: .
+    container_name: us_container
+    command: python US/user_server.py
+    ports:
+      - "8080:8080" 
+    networks:
+      my_network:
+        ipv4_address: 10.9.10.4
+        
+networks:
+  my_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.9.10.0/24
