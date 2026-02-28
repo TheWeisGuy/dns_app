@@ -24,3 +24,7 @@ For the fibonacci server:
 curl "http://localhost:9090/fibonacci?number=10"
 
 Again change the number query param for different values
+
+
+To deploy with kubernetes:
+kubectl apply -f deploy_dns.yml
